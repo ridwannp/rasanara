@@ -536,9 +536,9 @@ const Home = () => {
       {/* Navigation */}
       <div className="fixed top-0 w-full glass-nav z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 md:h-20">
             <div className="flex items-center space-x-3">
-              <Title level={4} className="!mb-0" style={{ color: 'var(--color-navy-dark)', fontFamily: 'Playfair Display, serif' }}>
+              <Title level={4} className="!mb-0 !text-lg md:!text-xl" style={{ color: 'var(--color-navy-dark)', fontFamily: 'Playfair Display, serif' }}>
                 RASANARA
               </Title>
             </div>
@@ -585,12 +585,30 @@ const Home = () => {
               </Button>
             </div>
 
-            <Button
-              className="md:hidden"
-              type="text"
-              icon={<MenuOutlined />}
-              onClick={() => setDrawerVisible(true)}
-            />
+            <div className="flex items-center gap-2 md:hidden">
+              <Button
+                type="text"
+                size="small"
+                onClick={() => setLanguage(language === 'id' ? 'en' : 'id')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  color: 'var(--color-navy-dark)',
+                  fontWeight: '600',
+                  fontSize: '12px',
+                  padding: '4px 8px'
+                }}
+              >
+                <LanguageIcon style={{ fontSize: '16px' }} />
+                {language === 'id' ? 'EN' : 'ID'}
+              </Button>
+              <Button
+                type="text"
+                icon={<MenuOutlined />}
+                onClick={() => setDrawerVisible(true)}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -611,6 +629,7 @@ const Home = () => {
               block
               onClick={() => scrollToSection(item.key)}
               className="text-left"
+              style={{ fontSize: '16px', height: '48px' }}
             >
               {item.label}
             </Button>
@@ -618,23 +637,33 @@ const Home = () => {
           <Button
             type="primary"
             block
-            className="bg-gradient-to-r from-orange-500 to-red-500 border-0"
-            icon={<RocketOutlined />}
+            className="btn-premium border-0 rounded-full"
+            style={{ 
+              background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
+              color: 'var(--color-navy-dark)',
+              height: '48px',
+              fontWeight: '600'
+            }}
+            icon={<WhatsAppOutlined />}
+            href="https://wa.me/6281297203692?text=Halo%20Rasanara%2C%20saya%20ingin%20mulai%20membangun%20cerita%20brand%20saya.%20Bisa%20bantu%20konsultasi%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setDrawerVisible(false)}
           >
-            Get Started
+            {t.navCTA}
           </Button>
         </div>
       </Drawer>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8" style={{ background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(99, 102, 241, 0.03) 50%, rgba(232, 180, 184, 0.03) 100%)' }}>
+      <section className="pt-24 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 lg:px-8" style={{ background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(99, 102, 241, 0.03) 50%, rgba(232, 180, 184, 0.03) 100%)' }}>
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center space-x-2 glass-card px-6 py-3 rounded-full text-sm font-semibold mb-10 animate-fade-in-up" style={{ color: 'var(--color-navy-dark)' }}>
-            <ThunderboltOutlined style={{ color: 'var(--color-gold)' }} />
-            <Text style={{ color: 'var(--color-navy-dark)' }}>{t.heroBadge}</Text>
+          <div className="inline-flex items-center space-x-2 glass-card px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-semibold mb-8 md:mb-10 animate-fade-in-up" style={{ color: 'var(--color-navy-dark)' }}>
+            <ThunderboltOutlined style={{ color: 'var(--color-gold)', fontSize: '14px' }} />
+            <Text style={{ color: 'var(--color-navy-dark)', fontSize: 'inherit' }}>{t.heroBadge}</Text>
           </div>
 
-          <Title level={1} className="!text-6xl md:!text-8xl !mb-8 animate-fade-in-up" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em' }}>
+          <Title level={1} className="!text-4xl sm:!text-5xl md:!text-6xl lg:!text-8xl !mb-6 md:!mb-8 animate-fade-in-up px-2" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em' }}>
             <span style={{ 
               background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
               WebkitBackgroundClip: 'text',
@@ -643,7 +672,7 @@ const Home = () => {
             }}>
               Rasa
             </span>
-            <span style={{ color: 'var(--color-navy-dark)', margin: '0 0.3em' }}>+</span>
+            <span style={{ color: 'var(--color-navy-dark)', margin: '0 0.2em md:0 0.3em' }}>+</span>
             <span style={{ 
               background: 'linear-gradient(135deg, var(--color-purple) 0%, var(--color-purple-light) 100%)',
               WebkitBackgroundClip: 'text',
@@ -654,18 +683,21 @@ const Home = () => {
             </span>
           </Title>
 
-          <Paragraph className="!text-xl md:!text-2xl !mb-12 max-w-3xl mx-auto animate-fade-in-up" style={{ color: 'var(--color-gray-700)', lineHeight: '1.7', fontWeight: '400' }}>
+          <Paragraph className="!text-base md:!text-xl lg:!text-2xl !mb-8 md:!mb-12 max-w-3xl mx-auto animate-fade-in-up px-4" style={{ color: 'var(--color-gray-700)', lineHeight: '1.7', fontWeight: '400' }}>
             {t.heroDescription}<br/> <br/>"{t.heroTagline}"
           </Paragraph>
 
-          <Space size="large" wrap className="mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 md:mb-16 px-4">
             <Button
               type="primary"
               size="large"
-              className="btn-premium border-0 rounded-full px-10 py-6 h-auto text-lg font-semibold shadow-lg"
+              className="btn-premium border-0 rounded-full w-full sm:w-auto font-semibold shadow-lg"
               style={{ 
                 background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
-                color: 'var(--color-navy-dark)'
+                color: 'var(--color-navy-dark)',
+                padding: '12px 32px',
+                height: 'auto',
+                fontSize: '16px'
               }}
               icon={<ArrowRightOutlined />}
               href="#services"
@@ -674,13 +706,18 @@ const Home = () => {
             </Button>
             <Button
               size="large"
-              className="glass-card rounded-full px-10 py-6 h-auto text-lg font-semibold border-0"
-              style={{ color: 'var(--color-navy-dark)' }}
+              className="glass-card rounded-full w-full sm:w-auto font-semibold border-0"
+              style={{ 
+                color: 'var(--color-navy-dark)',
+                padding: '12px 32px',
+                height: 'auto',
+                fontSize: '16px'
+              }}
               href="#portfolio"
             >
               {t.heroButton2}
             </Button>
-          </Space>
+          </div>
         </div>
       </section>
 
@@ -772,16 +809,16 @@ const Home = () => {
             </Paragraph>
             
             {/* Category Filters */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '40px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '40px', padding: '0 16px' }}>
               <Button
-                size="large"
                 className={portfolioFilter === 'all' ? 'btn-premium' : ''}
                 onClick={() => setPortfolioFilter('all')}
                 style={{
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   fontWeight: '600',
-                  padding: '0 24px',
-                  height: '44px',
+                  padding: '0 16px',
+                  height: '36px',
+                  fontSize: '13px',
                   background: portfolioFilter === 'all' 
                     ? 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)'
                     : 'white',
@@ -792,14 +829,14 @@ const Home = () => {
                 {t.portfolioFilterAll}
               </Button>
               <Button
-                size="large"
                 className={portfolioFilter === 'case-study' ? 'btn-premium' : ''}
                 onClick={() => setPortfolioFilter('case-study')}
                 style={{
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   fontWeight: '600',
-                  padding: '0 24px',
-                  height: '44px',
+                  padding: '0 16px',
+                  height: '36px',
+                  fontSize: '13px',
                   background: portfolioFilter === 'case-study' 
                     ? 'linear-gradient(135deg, var(--color-purple) 0%, var(--color-purple-light) 100%)'
                     : 'white',
@@ -810,14 +847,14 @@ const Home = () => {
                 {t.portfolioFilterCaseStudy}
               </Button>
               <Button
-                size="large"
                 className={portfolioFilter === 'internal' ? 'btn-premium' : ''}
                 onClick={() => setPortfolioFilter('internal')}
                 style={{
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   fontWeight: '600',
-                  padding: '0 24px',
-                  height: '44px',
+                  padding: '0 16px',
+                  height: '36px',
+                  fontSize: '13px',
                   background: portfolioFilter === 'internal' 
                     ? 'linear-gradient(135deg, var(--color-emerald) 0%, #34D399 100%)'
                     : 'white',
@@ -828,14 +865,14 @@ const Home = () => {
                 {t.portfolioFilterInternal}
               </Button>
               <Button
-                size="large"
                 className={portfolioFilter === 'personal' ? 'btn-premium' : ''}
                 onClick={() => setPortfolioFilter('personal')}
                 style={{
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   fontWeight: '600',
-                  padding: '0 24px',
-                  height: '44px',
+                  padding: '0 16px',
+                  height: '36px',
+                  fontSize: '13px',
                   background: portfolioFilter === 'personal' 
                     ? 'linear-gradient(135deg, var(--color-rose-gold) 0%, var(--color-rose-gold-light) 100%)'
                     : 'white',
@@ -1062,20 +1099,20 @@ const Home = () => {
                     "{t.aboutMission}"
                   </Paragraph>
                 </div>
-                <div className="custom-card absolute -top-8 -right-8 shadow-2xl border-0 rounded-3xl p-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)' }}>
-                      <UserOutlined className="text-3xl" style={{ color: 'var(--color-navy-dark)' }} />
+                <div className="custom-card absolute -top-6 -right-6 md:-top-8 md:-right-8 shadow-2xl border-0 rounded-2xl md:rounded-3xl p-4 md:p-6">
+                  <div className="flex items-center space-x-3 md:space-x-4">
+                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)' }}>
+                      <UserOutlined className="text-2xl md:text-3xl" style={{ color: 'var(--color-navy-dark)' }} />
                     </div>
                     <div className="">
                       <Title
                         level={4}
-                        className="!text-3xl !mb-1"
+                        className="!text-2xl md:!text-3xl !mb-1"
                         style={{ color: '#fff', fontFamily: 'Playfair Display, serif' }}
                       >
                         100+
                       </Title>
-                      <Text style={{ color: '#fff', fontSize: '14px' }}>{t.aboutStats}</Text>
+                      <Text style={{ color: '#fff', fontSize: '12px', display: 'block' }} className="md:text-sm">{t.aboutStats}</Text>
                     </div>
                   </div>
                 </div>
@@ -1384,24 +1421,24 @@ const Home = () => {
       {/* Footer */}
       <footer className="text-white py-16" style={{ background: 'linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Row justify="space-between" align="middle">
-            <Col xs={24} md={12} className="mb-6 md:mb-0">
-              <div className="flex items-center space-x-4">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)' }}>
-                  <span className="font-bold text-2xl" style={{ color: 'var(--color-navy-dark)', fontFamily: 'Playfair Display, serif' }}>R</span>
+          <Row justify="space-between" align="middle" gutter={[0, 24]}>
+            <Col xs={24} md={12} className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start space-x-4">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)' }}>
+                  <span className="font-bold text-xl md:text-2xl" style={{ color: 'var(--color-navy-dark)', fontFamily: 'Playfair Display, serif' }}>R</span>
                 </div>
                 <Title level={4} className="!mb-0 !text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  Rasanara
+                  Rasanara                
                 </Title>
               </div>
             </Col>
 
             <Col xs={24} md={12} className="text-center md:text-right">
-              <Paragraph className="!mb-3" style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '15px' }}>
+              <Paragraph className="!mb-3 md:text-base" style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14px' }}>
               {t.footerTagline}
               </Paragraph>
-              <Text style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '14px' }}>
-                © 2024 Rasanara. {t.footerCopyright}{" "}
+              <Text style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '13px' }} className="md:text-sm">
+                © 2024 Rasanarsa. {t.footerCopyright}{" "}
                 <HeartOutlined style={{ color: 'var(--color-rose-gold)' }} /> {t.footerLocation}
               </Text>
             </Col>
@@ -1414,17 +1451,18 @@ const Home = () => {
         open={modalVisible}
         onCancel={closePortfolioModal}
         footer={null}
-        width={900}
+        width="90%"
+        style={{ maxWidth: '900px', top: 20 }}
         closeIcon={<CloseOutlined style={{ color: 'var(--color-navy-dark)', fontSize: '20px' }} />}
         styles={{
           body: { padding: 0 },
-          content: { borderRadius: '24px', overflow: 'hidden' }
+          content: { borderRadius: '16px', overflow: 'hidden' }
         }}
       >
         {selectedPortfolio && (
           <div>
             {/* Modal Header Image */}
-            <div style={{ position: 'relative', height: '400px', overflow: 'hidden' }}>
+            <div style={{ position: 'relative', height: '250px', overflow: 'hidden' }} className="md:h-96">
               <img 
                 src={selectedPortfolio.image} 
                 alt={selectedPortfolio.title}
@@ -1437,62 +1475,65 @@ const Home = () => {
                   left: 0, 
                   right: 0,
                   background: 'linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%)',
-                  padding: '60px 40px 30px'
+                  padding: '40px 20px 20px'
                 }}
+                className="md:p-10"
               >
-                <Tag 
-                  style={{ 
-                    background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
-                    border: 'none',
-                    color: 'var(--color-navy-dark)',
-                    fontWeight: '600',
-                    padding: '6px 16px',
-                    borderRadius: '10px',
-                    marginBottom: '12px'
-                  }}
-                >
-                  {selectedPortfolio.category}
-                </Tag>
-                {selectedPortfolio.isSimulation && (
+                <div style={{ marginBottom: '12px' }}>
                   <Tag 
                     style={{ 
-                      background: 'rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      color: 'white',
+                      background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
+                      border: 'none',
+                      color: 'var(--color-navy-dark)',
                       fontWeight: '600',
-                      padding: '6px 16px',
-                      borderRadius: '10px',
-                      marginBottom: '12px',
-                      marginLeft: '8px'
+                      padding: '4px 12px',
+                      borderRadius: '8px',
+                      fontSize: '12px'
                     }}
                   >
-                    {t.portfolioSimulationBadge}
+                    {selectedPortfolio.category}
                   </Tag>
-                )}
+                  {selectedPortfolio.isSimulation && (
+                    <Tag 
+                      style={{ 
+                        background: 'rgba(255, 255, 255, 0.2)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        color: 'white',
+                        fontWeight: '600',
+                        padding: '4px 12px',
+                        borderRadius: '8px',
+                        marginLeft: '8px',
+                        fontSize: '12px'
+                      }}
+                    >
+                      {t.portfolioSimulationBadge}
+                    </Tag>
+                  )}
+                </div>
                 <Title 
                   level={2} 
-                  className="!mb-2" 
+                  className="!mb-2 !text-xl md:!text-2xl" 
                   style={{ color: 'white', fontFamily: 'Playfair Display, serif' }}
                 >
                   {selectedPortfolio.title}
                 </Title>
-                <div style={{ display: 'flex', gap: '24px', marginTop: '12px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <UserOutlined style={{ color: 'var(--color-gold)' }} />
-                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '14px' }}>
+                <div style={{ display: 'flex', gap: '16px', marginTop: '12px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <UserOutlined style={{ color: 'var(--color-gold)', fontSize: '12px' }} />
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '12px' }}>
                       {selectedPortfolio.client}
                     </Text>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CalendarOutlined style={{ color: 'var(--color-gold)' }} />
-                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <CalendarOutlined style={{ color: 'var(--color-gold)', fontSize: '12px' }} />
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '12px' }}>
                       {selectedPortfolio.year}
                     </Text>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <TeamOutlined style={{ color: 'var(--color-gold)' }} />
-                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <TeamOutlined style={{ color: 'var(--color-gold)', fontSize: '12px' }} />
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '12px' }}>
                       {selectedPortfolio.team}
                     </Text>
                   </div>
@@ -1501,7 +1542,7 @@ const Home = () => {
             </div>
 
             {/* Modal Content */}
-            <div style={{ padding: '40px' }}>
+            <div style={{ padding: '20px' }} className="md:p-10">
               {/* Description */}
               <div style={{ marginBottom: '32px' }}>
                 <Paragraph 
@@ -1645,32 +1686,34 @@ const Home = () => {
                 <div 
                   style={{ 
                     background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%)',
-                    padding: '20px',
+                    padding: '16px',
                     borderRadius: '16px',
                     display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
+                    flexDirection: 'column',
+                    gap: '16px'
                   }}
+                  className="md:flex-row md:justify-between md:items-center"
                 >
                   <div>
-                    <Text style={{ color: 'var(--color-gray-500)', fontSize: '13px', display: 'block' }}>
+                    <Text style={{ color: 'var(--color-gray-500)', fontSize: '12px', display: 'block' }}>
                       {t.modalDuration}
                     </Text>
-                    <Text style={{ color: 'var(--color-navy-dark)', fontSize: '16px', fontWeight: '600' }}>
+                    <Text style={{ color: 'var(--color-navy-dark)', fontSize: '15px', fontWeight: '600' }}>
                       {selectedPortfolio.duration}
                     </Text>
                   </div>
                   <Button 
                     type="primary"
-                    size="large"
-                    className="btn-premium"
+                    block
+                    className="btn-premium md:inline-block"
                     style={{ 
                       background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
                       color: 'var(--color-navy-dark)',
                       border: 'none',
                       borderRadius: '12px',
                       fontWeight: '600',
-                      padding: '0 32px'
+                      padding: '12px 24px',
+                      height: 'auto'
                     }}
                   >
                     {t.modalStartProject}

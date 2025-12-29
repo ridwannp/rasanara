@@ -200,3 +200,286 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-premium);
 }
+
+/* Mobile Responsive Utilities */
+@media (max-width: 768px) {
+  /* Reduce heading sizes on mobile */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Adjust card hover effects for mobile */
+  .card-elegant:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  /* Optimize spacing for mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  /* Further reduce text sizes */
+  body {
+    font-size: 14px;
+  }
+  
+  /* Ensure proper spacing */
+  .glass-card {
+    padding: 1rem !important;
+  }
+}
+
+/* ========================================
+   EXPORT LANDING PAGE STYLES
+   Vibrant, Colorful, Modern, Professional
+   ======================================== */
+
+/* Export Color Palette - Vibrant & Colorful */
+.export-landing {
+  --export-purple: #8B5CF6;
+  --export-purple-light: #A78BFA;
+  --export-blue: #3B82F6;
+  --export-blue-light: #60A5FA;
+  --export-orange: #F97316;
+  --export-orange-light: #FB923C;
+  --export-pink: #EC4899;
+  --export-pink-light: #F472B6;
+  --export-teal: #14B8A6;
+  --export-teal-light: #2DD4BF;
+  --export-indigo: #6366F1;
+  --export-rose: #F43F5E;
+}
+
+/* Export Navigation */
+.export-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow: 0 2px 20px rgba(139, 92, 246, 0.08);
+}
+
+/* Export Cards - Vibrant & Colorful */
+.export-card {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.export-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.export-feature-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(249, 115, 22, 0.05) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  transition: all 0.3s ease;
+}
+
+.export-feature-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 115, 22, 0.1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+}
+
+.export-pillar-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.export-pillar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.export-pillar-card:hover::before {
+  opacity: 1;
+}
+
+.export-pillar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+}
+
+.export-ai-card {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  box-shadow: 0 8px 40px rgba(139, 92, 246, 0.12);
+}
+
+.export-who-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+}
+
+/* Export Buttons - Vibrant & Colorful */
+.export-btn-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.export-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.export-btn-primary:hover::before {
+  left: 100%;
+}
+
+.export-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4) !important;
+  background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%) !important;
+}
+
+.export-btn-secondary {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%) !important;
+  color: #8B5CF6 !important;
+  border: 2px solid #8B5CF6 !important;
+  transition: all 0.3s ease;
+}
+
+.export-btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%) !important;
+  border-color: #7C3AED !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25) !important;
+}
+
+/* Export Process Cards - Vibrant Grid Layout */
+.export-process-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.export-process-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(180deg, #8B5CF6 0%, #3B82F6 50%, #14B8A6 100%);
+  transition: height 0.4s ease;
+}
+
+.export-process-card:hover::before {
+  height: 100%;
+}
+
+.export-process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+
+/* Calm Fade-in Animation for Export Page */
+@keyframes exportFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.export-landing section {
+  animation: exportFadeIn 0.6s ease-out;
+}
+
+/* Editorial Typography for Export Page */
+.export-landing h1,
+.export-landing h2,
+.export-landing h3,
+.export-landing h4 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.export-landing p {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* Mobile Responsive for Export Landing */
+@media (max-width: 768px) {
+  .export-landing h1 {
+    font-size: 2.25rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .export-landing h2 {
+    font-size: 1.875rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .export-pillar-card,
+  .export-feature-card {
+    margin-bottom: 1rem;
+  }
+  
+  .export-process-steps {
+    padding: 0 1rem;
+  }
+}
+
+

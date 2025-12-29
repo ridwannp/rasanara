@@ -4,6 +4,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
 import Home from "./component/home";
+import ExportLanding from "./component/ExportLanding";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/overview" element={<ExportLanding />} />
       </Routes>
     </Router>
   );
