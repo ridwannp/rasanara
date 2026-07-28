@@ -614,59 +614,26 @@ function Section2Reality() {
     { title: t.p4Title, text: t.p4Text, icon: "🔄", anim: { opacity: p4Opacity, y: p4Y, scale: p4Scale } },
   ];
 
-  if (isMobile) {
-    return (
-      <section id="reality" className="section">
-        <div className="container">
-          <SectionReveal>
-            <motion.div variants={blurReveal} style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <span style={{ fontSize: "0.75rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>
-                {t.sec2Tag}
-              </span>
-              <h2 style={{ fontSize: "clamp(1.35rem, 5vw, 2.25rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)" }}>
-                {t.sec2Headline}
-              </h2>
-            </motion.div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1rem" }}>
-              {painPoints.map((p, idx) => (
-                <motion.div key={idx} variants={scaleIn} className="rn-glass-card" style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{p.icon}</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--color-amber)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.4rem" }}>{p.title}</div>
-                  <p style={{ fontSize: "0.9375rem", color: "var(--color-text-primary)", fontWeight: 600, lineHeight: 1.5 }}>{p.text}</p>
-                </motion.div>
-              ))}
-            </div>
-            <motion.div variants={blurReveal} style={{ textAlign: "center", marginTop: "2.5rem" }}>
-              <h2 style={{ fontSize: "clamp(1.35rem, 5vw, 2rem)", fontWeight: 800, color: "var(--color-brand)" }}>
-                {t.sec2MorphTitle1}<br /><span className="text-amber">{t.sec2MorphTitle2}</span>
-              </h2>
-            </motion.div>
-          </SectionReveal>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <div id="reality" ref={targetRef} style={{ height: "150vh", position: "relative" }}>
       <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div className="container" style={{ width: "100%" }}>
-          <motion.div style={{ opacity: headlineOpacity, filter: headlineBlur, textAlign: "center", marginBottom: "3.5rem" }}>
+          <motion.div style={{ opacity: headlineOpacity, filter: headlineBlur, textAlign: "center", marginBottom: "2rem" }}>
             <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec2Tag}</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 4.5vw, 3.5rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.03em" }}>{t.sec2Headline}</h2>
+            <h2 style={{ fontSize: "clamp(1.25rem, 4.5vw, 3.5rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.03em" }}>{t.sec2Headline}</h2>
           </motion.div>
           <motion.div className="rn-sec2-morph-overlay" style={{ position: "absolute", top: "15%", left: "5%", right: "5%", opacity: morphHeadlineOpacity, filter: morphHeadlineBlur, textAlign: "center", pointerEvents: "none" }}>
             <span style={{ fontSize: "0.8125rem", color: "var(--color-brand)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec2MorphTag}</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 4vw, 3.25rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontSize: "clamp(1.25rem, 4vw, 3.25rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.02em" }}>
               {t.sec2MorphTitle1}<br /><span className="text-amber">{t.sec2MorphTitle2}</span>
             </h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
             {painPoints.map((p, idx) => (
               <motion.div key={idx} style={{ opacity: p.anim.opacity, y: p.anim.y, scale: p.anim.scale, textAlign: "center" }} className="rn-glass-card">
-                <div style={{ fontSize: "1.75rem", marginBottom: "0.75rem" }}>{p.icon}</div>
-                <div style={{ fontSize: "0.75rem", color: "var(--color-amber)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>{p.title}</div>
-                <p style={{ fontSize: "1rem", color: "var(--color-text-primary)", fontWeight: 600, lineHeight: 1.5 }}>{p.text}</p>
+                <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{p.icon}</div>
+                <div style={{ fontSize: "0.75rem", color: "var(--color-amber)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.25rem" }}>{p.title}</div>
+                <p style={{ fontSize: "0.875rem", color: "var(--color-text-primary)", fontWeight: 600, lineHeight: 1.4 }}>{p.text}</p>
               </motion.div>
             ))}
           </div>
@@ -708,22 +675,26 @@ function Section3WhatWeDo() {
     { title: t.s4Title, desc: t.s4Desc, anim: { opacity: s4Opacity, y: s4Y, scale: s4Scale } },
   ];
 
-  if (isMobile) {
-    return (
-      <section id="services" className="section">
-        <div className="container">
-          <SectionReveal>
-            <motion.div variants={blurReveal}>
-              <span style={{ fontSize: "0.75rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec3Tag}</span>
-              <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 800, lineHeight: 1.2, color: "var(--color-brand)", marginTop: "0.5rem", marginBottom: "1rem" }}>
+  return (
+    <div id="services" ref={targetRef} style={{ height: "220vh", position: "relative" }}>
+      <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+        <div className="container" style={{ width: "100%" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", alignItems: "center", position: "relative" }}>
+            <div>
+              <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec3Tag}</span>
+              <h2 style={{ fontSize: "clamp(1.5rem, 4vw, 3.5rem)", fontWeight: 800, lineHeight: 1.15, color: "var(--color-brand)", marginTop: "0.5rem", marginBottom: "1rem" }}>
                 {t.sec3Title1}<br /><span className="text-amber">{t.sec3Title2}</span>
               </h2>
-              <p style={{ fontSize: "0.9375rem", color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "1.5rem" }}>{t.sec3Sub}</p>
-            </motion.div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <p style={{ fontSize: "0.9375rem", color: "var(--color-text-secondary)", lineHeight: 1.5, maxWidth: "450px" }}>{t.sec3Sub}</p>
+            </div>
+            <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <svg style={{ position: "absolute", left: "-18px", top: "20px", bottom: "20px", width: "4px", height: "calc(100% - 40px)", overflow: "visible", pointerEvents: "none" }}>
+                <line x1="2" y1="0" x2="2" y2="100%" stroke="rgba(107, 25, 62, 0.15)" strokeWidth="2" />
+                <motion.line x1="2" y1="0" x2="2" y2="100%" stroke="#f28e29" strokeWidth="3" style={{ pathLength: lineProgress }} />
+              </svg>
               {services.map((s, idx) => (
-                <motion.div key={idx} variants={scaleIn} className="rn-glass-card">
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+                <motion.div key={idx} style={{ opacity: s.anim.opacity, y: s.anim.y, scale: s.anim.scale }} className="rn-glass-card">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.35rem" }}>
                     <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "var(--color-brand)" }}>{s.title}</h3>
                     <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--color-amber)" }}>0{idx + 1}</span>
                   </div>
@@ -731,42 +702,9 @@ function Section3WhatWeDo() {
                 </motion.div>
               ))}
             </div>
-          </SectionReveal>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <div id="services" ref={targetRef} style={{ height: "220vh", position: "relative" }}>
-      <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
-        <div className="container" style={{ width: "100%" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3rem", alignItems: "center", position: "relative" }}>
-            <div>
-              <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec3Tag}</span>
-              <h2 style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)", fontWeight: 800, lineHeight: 1.15, color: "var(--color-brand)", marginTop: "0.5rem", marginBottom: "1.5rem" }}>
-                {t.sec3Title1}<br /><span className="text-amber">{t.sec3Title2}</span>
-              </h2>
-              <p style={{ fontSize: "1.0625rem", color: "var(--color-text-secondary)", lineHeight: 1.6, maxWidth: "450px" }}>{t.sec3Sub}</p>
-            </div>
-            <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-              <svg style={{ position: "absolute", left: "-18px", top: "20px", bottom: "20px", width: "4px", height: "calc(100% - 40px)", overflow: "visible", pointerEvents: "none" }}>
-                <line x1="2" y1="0" x2="2" y2="100%" stroke="rgba(107, 25, 62, 0.15)" strokeWidth="2" />
-                <motion.line x1="2" y1="0" x2="2" y2="100%" stroke="#f28e29" strokeWidth="3" style={{ pathLength: lineProgress }} />
-              </svg>
-              {services.map((s, idx) => (
-                <motion.div key={idx} style={{ opacity: s.anim.opacity, y: s.anim.y, scale: s.anim.scale }} className="rn-glass-card">
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-                    <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--color-brand)" }}>{s.title}</h3>
-                    <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--color-amber)" }}>0{idx + 1}</span>
-                  </div>
-                  <p style={{ fontSize: "0.9375rem", color: "var(--color-text-secondary)" }}>{s.desc}</p>
-                </motion.div>
-              ))}
-            </div>
           </div>
-          <motion.div style={{ position: "absolute", bottom: "6%", left: 0, right: 0, textAlign: "center", opacity: sec4HeadlineOpacity, filter: sec4HeadlineBlur, pointerEvents: "none" }}>
-            <h3 style={{ fontSize: "1.25rem", color: "var(--color-brand)", fontWeight: 700 }}>{t.sec3Proceed}</h3>
+          <motion.div style={{ position: "absolute", bottom: "4%", left: 0, right: 0, textAlign: "center", opacity: sec4HeadlineOpacity, filter: sec4HeadlineBlur, pointerEvents: "none" }}>
+            <h3 style={{ fontSize: "1.125rem", color: "var(--color-brand)", fontWeight: 700 }}>{t.sec3Proceed}</h3>
           </motion.div>
         </div>
       </div>
@@ -779,7 +717,6 @@ function Section3WhatWeDo() {
    ============================================================ */
 function Section4Transformation() {
   const { t } = useContext(LanguageContext);
-  const isMobile = useIsMobile();
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
 
@@ -798,56 +735,6 @@ function Section4Transformation() {
     { icon: "🤖", title: "AI Agent Node", sub: "Claude API Stream", highlight: true },
     { icon: "📈", title: "Live Dashboard", sub: "Real-time metrics" },
   ];
-
-  if (isMobile) {
-    return (
-      <section id="transformation" className="section">
-        <div className="container">
-          <SectionReveal>
-            <motion.div variants={blurReveal} style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <span style={{ fontSize: "0.75rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec4Tag}</span>
-              <h2 style={{ fontSize: "clamp(1.35rem, 5vw, 2.25rem)", fontWeight: 800, color: "var(--color-brand)", marginTop: "0.5rem" }}>
-                {t.sec4Title1}<span className="text-amber"><br />{t.sec4Title2}</span>
-              </h2>
-              <p style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)", maxWidth: "640px", margin: "0.5rem auto 0" }}>{t.sec4Sub}</p>
-            </motion.div>
-
-            <motion.div variants={scaleIn} style={{ background: "#ffffff", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "1.5rem", boxShadow: "0 8px 32px rgba(107, 25, 62, 0.06)" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.875rem" }}>
-                {workflowNodes.map((n, idx) => (
-                  <div key={idx} className={n.highlight ? "" : "rn-glass-card"} style={{ padding: "1rem", textAlign: "center", ...(n.highlight ? { background: "var(--color-brand-light)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-md)" } : {}) }}>
-                    <div style={{ fontSize: "1.25rem" }}>{n.icon}</div>
-                    <div style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--color-brand)", marginTop: "0.25rem" }}>{n.title}</div>
-                    <span style={{ fontSize: "0.6875rem", color: n.highlight ? "var(--color-brand)" : "var(--color-amber)", fontWeight: 600 }}>{n.sub}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: "1px solid var(--color-border)", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem", textAlign: "center" }}>
-                <div>
-                  <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--color-brand)" }}>{t.m1Val}</div>
-                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m1Label}</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--color-amber)" }}>{t.m2Val}</div>
-                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m2Label}</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--color-brand)" }}>{t.m3Val}</div>
-                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m3Label}</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={blurReveal} style={{ textAlign: "center", marginTop: "2.5rem", padding: "2rem 1.25rem", background: "#ffffff", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", boxShadow: "0 12px 40px rgba(107, 25, 62, 0.08)" }}>
-              <h2 style={{ fontSize: "clamp(1.125rem, 4vw, 1.75rem)", fontWeight: 800, color: "var(--color-brand)", lineHeight: 1.3 }}>{t.sec4MorphTitle}</h2>
-              <p style={{ fontSize: "clamp(0.875rem, 2.5vw, 1.125rem)", color: "var(--color-amber)", marginTop: "0.75rem", fontWeight: 700 }}>{t.sec4MorphSub}</p>
-            </motion.div>
-          </SectionReveal>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <div id="transformation" ref={targetRef} style={{ height: "260vh", position: "relative" }}>

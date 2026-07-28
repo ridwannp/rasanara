@@ -408,25 +408,31 @@ body {
 
 
 
-  /* Typography Line Heights & Spacing */
+  /* Typography Line Heights & Spacing on Mobile */
   h1 {
-    font-size: clamp(1.85rem, 7vw, 2.75rem) !important;
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem) !important;
     line-height: 1.25 !important;
   }
   h2 {
-    font-size: clamp(1.5rem, 5.5vw, 2.25rem) !important;
+    font-size: clamp(1.25rem, 4.5vw, 2rem) !important;
     line-height: 1.3 !important;
   }
 
-  /* Card Padding */
+  /* Card Padding & Spacing for Mobile Viewport Fit */
   .rn-glass-card {
-    padding: 1.25rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+
+  /* Section 2 Grid on Mobile Sticky Viewport */
+  #reality .container > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
   }
 
   /* Section 3 Grid on Mobile */
   #services .container > div {
     grid-template-columns: 1fr !important;
-    gap: 2rem !important;
+    gap: 1rem !important;
   }
 
   /* Section 3 SVG line hidden on small screens */
@@ -436,16 +442,18 @@ body {
 
   /* Section 4 Grid & Cards on Mobile */
   .rn-sec4-nodes {
-    grid-template-columns: 1fr !important;
-    gap: 0.875rem !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
   }
   .rn-sec4-metrics {
-    grid-template-columns: 1fr !important;
-    gap: 0.875rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
   }
   .rn-sec4-morph-box {
-    padding: 1.5rem 1rem !important;
-    width: 100% !important;
+    padding: 1.25rem 0.85rem !important;
+    width: 95% !important;
   }
 
   /* Footer Mobile */
