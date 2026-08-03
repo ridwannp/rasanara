@@ -583,7 +583,7 @@ function useIsMobile(breakpoint = 768) {
    ============================================================ */
 function Section2Reality() {
   const { t } = useContext(LanguageContext);
-  const isMobile = useIsMobile();
+
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -648,7 +648,6 @@ function Section2Reality() {
    ============================================================ */
 function Section3WhatWeDo() {
   const { t } = useContext(LanguageContext);
-  const isMobile = useIsMobile();
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
 
