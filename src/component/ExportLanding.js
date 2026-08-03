@@ -569,6 +569,14 @@ function Hero() {
    ============================================================ */
 function Section2Reality() {
   const { t } = useContext(LanguageContext);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -599,6 +607,38 @@ function Section2Reality() {
     { title: t.p3Title, text: t.p3Text, icon: "📉", anim: { opacity: p3Opacity, y: p3Y, scale: p3Scale } },
     { title: t.p4Title, text: t.p4Text, icon: "🔄", anim: { opacity: p4Opacity, y: p4Y, scale: p4Scale } },
   ];
+
+  if (isMobile) {
+    return (
+      <section id="reality" className="section" style={{ background: "var(--color-bg)", padding: "3.5rem 0" }}>
+        <div className="container">
+          <SectionReveal>
+            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+              <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec2Tag}</span>
+              <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.03em" }}>{t.sec2Headline}</h2>
+            </div>
+            
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.75rem", marginBottom: "2.5rem" }}>
+              {painPoints.map((p, idx) => (
+                <motion.div key={idx} variants={scaleIn} style={{ textAlign: "center", padding: "1rem 0.75rem" }} className="rn-glass-card">
+                  <div style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>{p.icon}</div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--color-amber)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.25rem" }}>{p.title}</div>
+                  <p style={{ fontSize: "0.8125rem", color: "var(--color-text-primary)", fontWeight: 600, lineHeight: 1.35 }}>{p.text}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={blurReveal} style={{ textAlign: "center", background: "var(--color-brand-light)", padding: "1.5rem 1rem", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border)" }}>
+              <span style={{ fontSize: "0.75rem", color: "var(--color-brand)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec2MorphTag}</span>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 800, marginTop: "0.5rem", color: "var(--color-brand)", letterSpacing: "-0.02em" }}>
+                {t.sec2MorphTitle1}<br /><span className="text-amber">{t.sec2MorphTitle2}</span>
+              </h3>
+            </motion.div>
+          </SectionReveal>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div id="reality" ref={targetRef} style={{ height: "150vh", position: "relative" }}>
@@ -634,6 +674,15 @@ function Section2Reality() {
    ============================================================ */
 function Section3WhatWeDo() {
   const { t } = useContext(LanguageContext);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
 
@@ -659,6 +708,36 @@ function Section3WhatWeDo() {
     { title: t.s3Title, desc: t.s3Desc, anim: { opacity: s3Opacity, y: s3Y, scale: s3Scale } },
     { title: t.s4Title, desc: t.s4Desc, anim: { opacity: s4Opacity, y: s4Y, scale: s4Scale } },
   ];
+
+  if (isMobile) {
+    return (
+      <section id="services" className="section" style={{ background: "var(--color-bg)", padding: "3.5rem 0" }}>
+        <div className="container">
+          <SectionReveal>
+            <div style={{ marginBottom: "2rem" }}>
+              <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec3Tag}</span>
+              <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 800, lineHeight: 1.2, color: "var(--color-brand)", marginTop: "0.5rem", marginBottom: "0.75rem" }}>
+                {t.sec3Title1}<br /><span className="text-amber">{t.sec3Title2}</span>
+              </h2>
+              <p style={{ fontSize: "0.9375rem", color: "var(--color-text-secondary)", lineHeight: 1.5 }}>{t.sec3Sub}</p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {services.map((s, idx) => (
+                <motion.div key={idx} variants={fadeUp} className="rn-glass-card">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.35rem" }}>
+                    <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "var(--color-brand)" }}>{s.title}</h3>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--color-amber)" }}>0{idx + 1}</span>
+                  </div>
+                  <p style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)" }}>{s.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div id="services" ref={targetRef} style={{ height: "220vh", position: "relative" }}>
@@ -702,6 +781,15 @@ function Section3WhatWeDo() {
    ============================================================ */
 function Section4Transformation() {
   const { t } = useContext(LanguageContext);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
 
@@ -720,6 +808,56 @@ function Section4Transformation() {
     { icon: "🤖", title: "AI Agent Node", sub: "Claude API Stream", highlight: true },
     { icon: "📈", title: "Live Dashboard", sub: "Real-time metrics" },
   ];
+
+  if (isMobile) {
+    return (
+      <section id="transformation" className="section" style={{ background: "var(--color-bg)", padding: "3.5rem 0" }}>
+        <div className="container">
+          <SectionReveal>
+            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+              <span style={{ fontSize: "0.8125rem", color: "var(--color-amber)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>{t.sec4Tag}</span>
+              <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", fontWeight: 800, color: "var(--color-brand)", marginTop: "0.5rem" }}>
+                {t.sec4Title1}<span className="text-amber"><br />{t.sec4Title2}</span>
+              </h2>
+              <p style={{ fontSize: "0.9375rem", color: "var(--color-text-secondary)", marginTop: "0.5rem" }}>{t.sec4Sub}</p>
+            </div>
+
+            <motion.div variants={scaleIn} style={{ background: "#ffffff", border: "1px solid var(--color-border)", borderRadius: "var(--radius-md)", padding: "1.25rem 0.85rem", marginBottom: "1.5rem", boxShadow: "0 8px 24px rgba(107, 25, 62, 0.06)" }}>
+              <div className="rn-sec4-nodes" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.5rem" }}>
+                {workflowNodes.map((n, idx) => (
+                  <div key={idx} className={n.highlight ? "" : "rn-glass-card"} style={{ padding: "0.75rem 0.5rem", textAlign: "center", ...(n.highlight ? { background: "var(--color-brand-light)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-sm)", boxShadow: "0 2px 10px rgba(107, 25, 62, 0.08)" } : {}) }}>
+                    <div style={{ fontSize: "1.25rem" }}>{n.icon}</div>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--color-brand)", marginTop: "0.2rem" }}>{n.title}</div>
+                    <span style={{ fontSize: "0.6875rem", color: n.highlight ? "var(--color-brand)" : "var(--color-amber)", fontWeight: 600 }}>{n.sub}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="rn-sec4-metrics" style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--color-border)", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.35rem", textAlign: "center" }}>
+                <div>
+                  <div style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--color-brand)" }}>{t.m1Val}</div>
+                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m1Label}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--color-amber)" }}>{t.m2Val}</div>
+                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m2Label}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--color-brand)" }}>{t.m3Val}</div>
+                  <div style={{ fontSize: "0.6875rem", color: "var(--color-text-secondary)", fontWeight: 600 }}>{t.m3Label}</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={blurReveal} style={{ textAlign: "center", background: "#ffffff", border: "1px solid var(--color-border)", borderRadius: "var(--radius-md)", padding: "1.5rem 1rem", boxShadow: "0 8px 24px rgba(107, 25, 62, 0.08)" }}>
+              <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--color-brand)", letterSpacing: "-0.02em", lineHeight: 1.25 }}>{t.sec4MorphTitle}</h3>
+              <p style={{ fontSize: "0.9375rem", color: "var(--color-amber)", marginTop: "0.5rem", fontWeight: 700 }}>{t.sec4MorphSub}</p>
+            </motion.div>
+          </SectionReveal>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div id="transformation" ref={targetRef} style={{ height: "260vh", position: "relative" }}>
